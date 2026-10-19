@@ -5,6 +5,9 @@
 #show: figure-style
 #import "../libs/efgs.typ": efg-tree, kuhn-tree
 
+// Color of the edges (and action labels) prescribed by each highlighted profile.
+#let equilibrium-color = orange.darken(10%)
+
 #stack(
       dir: ltr,
       spacing: 1fr,
@@ -28,6 +31,7 @@
             "/ANT/bet/BAT": (230, 360),
           ),
           highlight-edges: ("/AT/quit", "/ANT/quit", "/AT/bet/BNAT", "/ANT/bet/BNAT"),
+          highlight-color: equilibrium-color,
           payoff: key => if key.contains("bet") [$(-\$, \$)$] else [$(0,0)$],
           action-name: action => if action == "BNAT" [
             #{ sym.not }A#spade
@@ -49,7 +53,8 @@
         )
 
         #set align(center)
-        "Sensible" Nash equilibrium
+        "Sensible" Nash equilibrium \
+        #text(8pt)[Player 1 quits; Player 2 would guess #{ sym.not }A#spade]
       ],
       box(
         fill: blue.lighten(97%), //luma(97%),
@@ -72,6 +77,7 @@
           ),
           payoff: key => if key.contains("bet") [$(-\$, \$)$] else [$(0,0)$],
           highlight-edges: ("/AT/quit", "/ANT/quit", "/AT/bet/BAT", "/ANT/bet/BAT"),
+          highlight-color: equilibrium-color,
           action-name: action => if action == "BNAT" [
             #{ sym.not }A#spade
           ] else if action == "BAT" [
@@ -92,6 +98,7 @@
         )
 
         #set align(center)
-        "Questionable" Nash equilibrium
+        "Questionable" Nash equilibrium \
+        #text(8pt)[Player 1 quits; Player 2 would guess A#spade]
       ],
     )

@@ -13,22 +13,22 @@ As we discussed on multiple occasions, Nash equilibrium strategies encode the id
 Nash equilibrium strategies are only optimized for the strongest possible opponent. Because of that, they are completely indifferent to what happens in parts of the game tree that are reached only if a player makes a mistake.
 
 #example[
-  To make the discussion more concrete, consider the _Guess-the-Ace_ game, introduced by~#citet(<Miltersen06:Computing>).
+  To make the discussion more concrete, consider the _Guess-the-Ace_ game, introduced by~#citet(<Miltersen06:Computing>) and described below. The two panels show the same game tree; in each, the thick orange edges mark the actions prescribed by a Nash equilibrium strategy profile.
 
   #align(center)[
     #image("figures/perfection/guess-the-ace.svg", width: 100.0%)
   ]
 ] <ex:guess-the-ace>
 
-In Guess-the-Ace, at the start a standard 52-card deck is perfectly shuffled, face down, by a dealer. Then, Player~$1$ can decide whether to immediately end the game, at which point no money is transferred between the players, or offer \$1000 to Player~$2$ if they can correctly guess whether the top card of the shuffled deck is the ace of spaces or not. If Player~$2$ guesses correctly, the \$1000 get transferred from Player~$1$ to Player~$2$; if not, no money is transferred. The game tree is summarized in @ex:guess-the-ace.
+In Guess-the-Ace, at the start a standard 52-card deck is perfectly shuffled, face down, by a dealer. Then, Player~$1$ can decide whether to immediately end the game, at which point no money is transferred between the players, or offer \$1000 to Player~$2$ if they can correctly guess whether the top card of the shuffled deck is the ace of spades or not. If Player~$2$ guesses correctly, the \$1000 get transferred from Player~$1$ to Player~$2$; if not, no money is transferred. The game tree is summarized in @ex:guess-the-ace.
 
 Clearly, the only Nash equilibrium strategy for Player~$1$ is to quit immediately, or they are guaranteed to _lose_ money. Since Player~$2$ does not get to play, any strategy for Player~$2$ is a Nash equilibrium strategy.
 
-In particular, both highlighted equilibria in @ex:guess-the-ace are Nash equilibria. However, the two equilibria are significantly different from a practical point of view. Imagine that Player~$2$ is a bot playing against opponents in the real world, blindly following the Nash equilibrium strategy it has precomputed. If Player~$1$ makes a mistake and decides to offer the \$1000 instead of immediately quitting, the Nash equilibrium that bets that the top card is _not_ the ace of space has an expected utility of $>$ \$980 whereas the Nash equilibrium that bets that the top card is the ace of spade only has an expected utility of $<$ \$20.
+In particular, consider the two strategy profiles highlighted in @ex:guess-the-ace. Player~$1$'s strategy is the same in both: quit at both nodes of information set A. The two profiles differ only in the guess that Player~$2$ would make at information set B, which is never reached when Player~$1$ quits: in the left profile Player~$2$ would guess that the top card is _not_ the ace of spades (action \`$not$A$suit.spade.filled$'), whereas in the right profile Player~$2$ would guess that it _is_ (action \`A$suit.spade.filled$'). Since B is never reached, Player~$2$'s guess does not affect the utility of either player, and both profiles are Nash equilibria. However, the two equilibria are significantly different from a practical point of view. Imagine that Player~$2$ is a bot playing against opponents in the real world, blindly following the Nash equilibrium strategy it has precomputed. If Player~$1$ makes a mistake and decides to offer the \$1000 instead of immediately quitting, the left equilibrium, which bets that the top card is _not_ the ace of spades, has an expected utility of $51\/52 dot.op$ \$1000 $>$ \$980 for Player~$2$, whereas the right equilibrium, which bets that the top card _is_ the ace of spades, only has an expected utility of $1\/52 dot.op$ \$1000 $<$ \$20.
 
-So, while both strategy profiles in @ex:guess-the-ace are Nash equilibria, only one of the two is _“sensible”_.
+So, while both strategy profiles in @ex:guess-the-ace are Nash equilibria, only the left one is _“sensible”_.
 
-Formalizing this subtle notion of rationality within the set of Nash equilibria has been a major endeavor for the game-theoretic literature in the 70s and 80s. Today, we say that the equilibrium in @ex:guess-the-ace (Left) is _sequentially irrational_, while the one on the right is _sequentially rational_.  The takeaway lesson is:
+Formalizing this subtle notion of rationality within the set of Nash equilibria has been a major endeavor for the game-theoretic literature in the 70s and 80s. Today, we say that the equilibrium in @ex:guess-the-ace (Right) is _sequentially irrational_, while the one on the left is _sequentially rational_: at information set B, Player~$2$ knows that the top card is the ace of spades with probability only $1\/52$, so guessing \`A$suit.spade.filled$' is not a best response at B, even though B is never reached at equilibrium. The takeaway lesson is:
 
 #remark[
   Not all Nash equilibria are equally “good” when the agents can make mistakes. Specifically, sequentially-irrational Nash equilibria might leave value on the table, by being incapable of capitalizing on opponents' mistakes.

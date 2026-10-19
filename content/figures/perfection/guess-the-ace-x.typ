@@ -30,6 +30,7 @@
       "/ANT/bet/BAT/gift": (150, 480),
     ),
     highlight-edges: ("/AT/quit", "/ANT/quit", "/AT/bet/BNAT", "/ANT/bet/BNAT"),
+    highlight-color: orange.darken(10%),
     payoff: key => if key.contains("bet") [$(-\$, \$)$] else [$(0,0)$],
     action-name: action => if action == "BNAT" [
       #{ sym.not }A#spade
