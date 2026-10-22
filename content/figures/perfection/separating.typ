@@ -15,8 +15,8 @@
 #let lerp(u, v, s) = (u.at(0) + (v.at(0) - u.at(0)) * s, u.at(1) + (v.at(1) - u.at(1)) * s)
 
 // t: payoff after r. profile: highlighted actions. notes: action -> gray
-// annotation after the action label. shade-b: shade the subtree after b.
-#let tree(t, profile: (), notes: (:), shade-b: false) = [
+// annotation after the action label.
+#let tree(t, profile: (), notes: (:)) = [
   #set text(8pt)
   #cetz.canvas(length: 0.9cm, {
   import cetz.draw: *
@@ -28,11 +28,6 @@
   let leaf-r = (0.1, -2.2)
   let leaf-c = (1.1, -3.3)
   let leaf-d = (2.7, -3.3)
-
-  if shade-b {
-    rect((0.05, -0.55), (3.3, -3.8), radius: 1.5mm, stroke: none, fill: luma(90%))
-    content((2.5, -0.78), text(7pt, fill: note-color)[never reached after #sf[a]])
-  }
 
   let edge(u, v, key, pos) = {
     let hl = key in profile
@@ -80,7 +75,7 @@
     [*(a)* $t = 2$, $sigma = (a c; s)$ \ EFPE, not normal-form perfect],
   ),
   panel(
-    tree($1$, profile: ("a", "d", "s"), shade-b: true),
+    tree($1$, profile: ("a", "d", "s")),
     [*(b)* $t = 1$, $sigma' = (a d; s)$ \ normal-form perfect, not sequential],
   ),
   panel(
