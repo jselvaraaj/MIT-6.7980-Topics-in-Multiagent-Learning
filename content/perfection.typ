@@ -125,21 +125,24 @@ The relationships among the different refinements is summarized in the Venn diag
 
 Every inclusion in @fig:refinements is strict. The next example exhibits, in the single game of @fig:separating, three profiles that separate the sets: an EFPE that is not normal-form perfect, a normal-form perfect equilibrium that is not sequential, and a QPE that is not an EFPE. Together they show that extensive-form perfection is incomparable with both normal-form perfection and quasi-perfection; the classical examples of these phenomena are due to #citet(<Selten75:Reexamination>), #citet(<vanDamme84:relation>), #citet(<kohlberg1986strategic>), and #citet(<Mertens95:Two>), whose example even has disjoint sets of EFPE and of QPE #citep(<Farina18:Practical>). For a systematic treatment, see Chapter~6 of #citet(<vanDamme91:Stability>) or the survey by #citet(<Hillas02:Foundations>).
 
-#figure(caption: [A two-player zero-sum perfect-information game, drawn once for each of the three profiles of @ex:separating. The first payoff belongs to Player~$1$, who moves at A and C (black nodes); Player~$2$ moves at B. Thick orange edges are the actions that the profile prescribes. The gray labels are the trembles that each argument relies on: in (a), the uniform trembles $epsilon.alt$ of the perturbed problem (@eq:efpe), under which continuing at A is worth $1 - epsilon.alt + 2 epsilon.alt^2 < 1$; in (b), C can be reached only if Player~$1$ deviates from $a$, so the plan $a d$ is never tested at C; in (c), a quasi-perfect Player~$1$ accounts for Player~$2$'s tremble $eta$ at B but not for a tremble of their own at C, so continuing at A is worth exactly $1$.])[
+#figure(caption: [A two-player zero-sum perfect-information game, drawn once for each of the three profiles of @ex:separating. The first payoff belongs to Player~$1$, who moves at A and C (black nodes); Player~$2$ moves at B. If Player~$2$ plays $r$, Player~$1$ receives $t$; the gray label beside that leaf gives the value of $t$ in each panel. Thick orange edges are the actions that the profile prescribes. The gray labels in parentheses are the trembles that each argument relies on: in (a), the uniform trembles $epsilon.alt$ of the perturbed problem (@eq:efpe), under which continuing at A is worth $1 - epsilon.alt + 2 epsilon.alt^2 < 1$; in (b), C can be reached only if Player~$1$ deviates from $a$, so the plan $a d$ is never tested at C; in (c), a quasi-perfect Player~$1$ accounts for Player~$2$'s tremble $eta$ at B but not for a tremble of their own at C, so continuing at A is worth exactly $1$.])[
   #image("figures/perfection/separating.svg", width: 100%)
 ] <fig:separating>
 
 #figure(
   kind: table,
   supplement: [Table],
-  caption: [Player~$1$'s payoffs in the normal form of the game of @fig:separating; Player~$2$'s payoffs are their negatives. The plans $a c$ and $a d$ form a single row because C is unreached after $a$. For $t = 2$, the plan $b c$ weakly dominates stopping; for $t = 1$, every plan other than $b d$ earns $1$ whatever Player~$2$ does.],
+  caption: [Player~$1$'s payoffs in the normal form of the game of @fig:separating: each entry is what Player~$1$ earns by following the plan in its row when Player~$2$ plays the action in its column. Player~$2$'s payoffs are their negatives. The plans $a c$ and $a d$ form a single row because C is unreached after $a$. For $t = 2$, the plan $b c$ weakly dominates stopping; for $t = 1$, every plan other than $b d$ earns $1$ whatever Player~$2$ does.],
 )[
   #table(
     stroke: none,
     columns: 5,
     align: (left, center, center, center, center),
     inset: .7em,
-    table.header([*Plan*], [*$t = 2$*, vs.~$r$], [*$t = 2$*, vs.~$s$], [*$t = 1$*, vs.~$r$], [*$t = 1$*, vs.~$s$]),
+    table.header(
+      [], table.cell(colspan: 2)[*$t = 2$*, Player~$2$ plays], table.cell(colspan: 2)[*$t = 1$*, Player~$2$ plays],
+      [*Plan of Player~$1$*], [$r$], [$s$], [$r$], [$s$],
+    ),
     [$a c$, $a d$], [$1$], [$1$], [$1$], [$1$],
     [$b c$], [$2$], [$1$], [$1$], [$1$],
     [$b d$], [$2$], [$-1$], [$1$], [$-1$],

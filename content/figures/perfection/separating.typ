@@ -14,7 +14,7 @@
 
 #let lerp(u, v, s) = (u.at(0) + (v.at(0) - u.at(0)) * s, u.at(1) + (v.at(1) - u.at(1)) * s)
 
-// t: payoff after r. profile: highlighted actions. notes: action -> gray
+// t: value of the payoff t after r, shown beside that leaf. profile: highlighted actions. notes: action -> gray
 // annotation after the action label.
 #let tree(t, profile: (), notes: (:)) = [
   #set text(8pt)
@@ -48,10 +48,12 @@
     circle(pos, radius: .09, fill: fill)
     content(lbl-pos, text(fill: blue, sf(lbl)))
   }
-  for (pos, payoff) in ((leaf-a, $(1, -1)$), (leaf-r, $(#t, -#t)$), (leaf-c, $(1, -1)$), (leaf-d, $(-1, 1)$)) {
+  for (pos, payoff) in ((leaf-a, $(1, -1)$), (leaf-r, $(t, -t)$), (leaf-c, $(1, -1)$), (leaf-d, $(-1, 1)$)) {
     rect((pos.at(0) - .06, pos.at(1) - .06), (pos.at(0) + .06, pos.at(1) + .06), fill: white)
     content((pos.at(0), pos.at(1) - .32), payoff)
   }
+  // The value of t in this panel, next to the leaf whose payoff it sets.
+  content((leaf-r.at(0) - .2, leaf-r.at(1)), anchor: "east", text(7pt, fill: note-color)[$t = #t$])
   })
 ]
 
